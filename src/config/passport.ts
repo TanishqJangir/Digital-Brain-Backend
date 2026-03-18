@@ -16,7 +16,7 @@ passport.use(new GoogleStrategy({
     clientSecret: env.GOOGLE_CLIENT_SECRET,
     callbackURL: "/api/v1/auth/google/callback"
 },
-    async (accessToken, refreshToken, profile, done) => {
+    async (accessToken: string, refreshToken: string, profile: any, done: any) => {
 
         try {
 
@@ -48,7 +48,7 @@ passport.use(new GitHubStrategy({
     callbackURL: "/api/v1/auth/github/callback",
     scope: ["user:email"]
 },
-    async (accessToken: string, refreshToken: string, profile: any, done: Function) => {
+    async (accessToken: string, refreshToken: string, profile: any, done: any) => {
 
         try {
             let user = await User.findOne({ provider: "github", providerId: profile.id });
