@@ -17,7 +17,7 @@ const envSchema = z.object({
   CLIENT_URL: z.string().url(),
   EMAIL_USER: z.string().email(),
   EMAIL_PASS: z.string(),
-  GOOGLE_API_KEY: z.string(),
+  // GOOGLE_API_KEY: z.string(),
 });
 
 const parsed = envSchema.safeParse(process.env);
