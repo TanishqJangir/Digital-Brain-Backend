@@ -44,6 +44,7 @@ export const generateOtpController = async (req: Request, res: Response): Promis
         });
 
     } catch (error: any) {
+        console.error("Error while generating otp: ", error);
         return res.status(500).json({
             message: "Some error occured while generating the otp.",
             error: error,
@@ -102,6 +103,7 @@ export const verifyOtpController = async (req: Request, res: Response): Promise<
             message: "Email Verified successfully."
         })
     } catch (error) {
+        console.error("Error while verifying the otp: ", error);
         return res.status(500).json({
             message: "Something went wrong while verifying the otp.",
         })
