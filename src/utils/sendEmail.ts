@@ -3,6 +3,8 @@ import { env } from "../config/env";
 
 export const sendOtpEmail = async (email: string, otp: string) => {
 
+  console.log(env.BRAVO_PASS);
+  console.log(env.BRAVO_USER);
   const transporter = nodemailer.createTransport({
     host: "smtp-relay.brevo.com",
     port: 587,
