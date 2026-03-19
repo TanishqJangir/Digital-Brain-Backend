@@ -4,15 +4,17 @@ import { env } from "../config/env";
 export const sendOtpEmail = async (email: string, otp: string) => {
 
   const transporter = nodemailer.createTransport({
-    service: "gmail",
+    host: "smtp-relay.brevo.com",
+    port: 587,
+    secure: false,
     auth: {
-      user: env.EMAIL_USER,
-      pass: env.EMAIL_PASS,
+      user: env.BRAVO_USER,
+      pass: env.BRAVO_PASS,
     },
   });
 
   await transporter.sendMail({
-    from: `"Digital Brain" <${env.EMAIL_USER}>`,
+    from: `"Digital Brain" <${env.BRAVO_USER}>`,
     to: email,
     subject: "Verify your email",
     html: `<h2>Your OTP is ${otp}</h2>`,
