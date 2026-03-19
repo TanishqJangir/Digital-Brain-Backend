@@ -1,18 +1,19 @@
 import express from "express";
 import {
-    signupController,
+    // signupController,
+    manuallySignupController,
     signinController,
     meController,
-    verifyOtpController,
-    generateOtpController,
+    // verifyOtpController,
+    // generateOtpController,
     deleteAccountController,
     updateNameController,
-    updatePasswordGenerateOtpController,
-    updatePasswordVerifyOtpController,
-    updatePasswordController,
-    forgotPasswordGenerateOtpController,
-    forgotPasswordVerifyOtpController,
-    forgotPasswordResetController
+    // updatePasswordGenerateOtpController,
+    // updatePasswordVerifyOtpController,
+    // updatePasswordController,
+    // forgotPasswordGenerateOtpController,
+    // forgotPasswordVerifyOtpController,
+    // forgotPasswordResetController
 } from "../controllers/user.controller";
 import { requireAuth } from "../middlewares/auth.middleware";
 import { validate } from "../middlewares/validate.middleware";
@@ -56,10 +57,10 @@ router.get("/github/callback", passport.authenticate("github", { session: false,
         }
     });
 
-router.post("/signup", validate(signupSchema), signupController);
+router.post("/signup", validate(signupSchema), manuallySignupController);
 router.post("/signin", validate(loginSchema), signinController);
-router.post("/generate-otp", generateOtpController);
-router.post("/verify-otp", verifyOtpController);
+// router.post("/generate-otp", generateOtpController);
+// router.post("/verify-otp", verifyOtpController);
 router.get("/me", requireAuth, meController);
 router.delete("/delete-account", requireAuth, deleteAccountController);
 
@@ -67,14 +68,14 @@ router.delete("/delete-account", requireAuth, deleteAccountController);
 router.put("/name", requireAuth, updateNameController);
 
 // Password Change Flow (Authenticated)
-router.post("/password-otp/generate", requireAuth, updatePasswordGenerateOtpController);
-router.post("/password-otp/verify", requireAuth, updatePasswordVerifyOtpController);
-router.put("/password", requireAuth, updatePasswordController);
+// router.post("/password-otp/generate", requireAuth, updatePasswordGenerateOtpController);
+// router.post("/password-otp/verify", requireAuth, updatePasswordVerifyOtpController);
+// router.put("/password", requireAuth, updatePasswordController);
 
 // Forgot Password Flow (Unauthenticated)
-router.post("/forgot-password/generate", forgotPasswordGenerateOtpController);
-router.post("/forgot-password/verify", forgotPasswordVerifyOtpController);
-router.post("/forgot-password/reset", forgotPasswordResetController);
+// router.post("/forgot-password/generate", forgotPasswordGenerateOtpController);
+// router.post("/forgot-password/verify", forgotPasswordVerifyOtpController);
+// router.post("/forgot-password/reset", forgotPasswordResetController);
 
 
 export default router;
