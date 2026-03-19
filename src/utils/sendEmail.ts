@@ -4,19 +4,17 @@ import { env } from "../config/env";
 export const sendOtpEmail = async (email: string, otp: string) => {
 
   const transporter = nodemailer.createTransport({
-    host: "smtp.gmail.com",
-    port: 587,
-    secure: false,
-    family: 4,
+    service: "gmail",
     auth: {
       user: env.EMAIL_USER,
-      pass: env.EMAIL_PASS
-    }
-  } as any);
+      pass: env.EMAIL_PASS,
+    },
+  });
 
   await transporter.sendMail({
+    from: `"Digital Brain" <${env.EMAIL_USER}>`,
     to: email,
     subject: "Verify your email",
-    html: `<h2>Your OTP is ${otp}</h2>`
+    html: `<h2>Your OTP is ${otp}</h2>`,
   });
 };
