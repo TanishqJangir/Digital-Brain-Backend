@@ -7,11 +7,12 @@ export const sendOtpEmail = async (email: string, otp: string) => {
     host: "smtp.gmail.com",
     port: 587,
     secure: false,
+    family: 4,
     auth: {
       user: env.EMAIL_USER,
       pass: env.EMAIL_PASS
     }
-  });
+  } as any);
 
   await transporter.sendMail({
     to: email,
