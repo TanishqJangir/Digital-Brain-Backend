@@ -15,8 +15,8 @@ const envSchema = z.object({
   GITHUB_CLIENT_SECRET: z.string(),
   GITHUB_CALLBACK_URL: z.string().url(),
   CLIENT_URL: z.string().url(),
-  BRAVO_USER: z.string().email(),
-  BRAVO_PASS: z.string(),
+  EMAIL_USER: z.string().email(),
+  EMAIL_PASS: z.string(),
   // GOOGLE_API_KEY: z.string(),
 });
 
